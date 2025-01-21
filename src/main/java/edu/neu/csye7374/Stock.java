@@ -30,9 +30,12 @@ abstract class Stock implements Tradable{
     }
 
     public void displayPriceHistory(){
+        String result = "[";
         for (Double price : priceHistory) {
-            System.out.println(price);
+            result += price + ", ";
         }
+        result = result.substring(0, result.length() - 2) + "]";
+        System.out.println(result);
     }
 
     public String getName() {

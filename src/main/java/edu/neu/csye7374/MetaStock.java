@@ -6,7 +6,7 @@ public class MetaStock extends Stock implements Tradable1{
 
   public MetaStock(String name, double price, String description) {
     super(name, price, description);
-    this.metric = String.format("%.4f", Math.sqrt(price));
+    addPriceToHistory(price);
   }
 
   @Override
@@ -14,7 +14,8 @@ public class MetaStock extends Stock implements Tradable1{
       try {
           double numericBid = Double.parseDouble(bid);
           previousPrice = price;
-          price += numericBid * 0.02; 
+          price += numericBid * 0.02;
+          addPriceToHistory(price); 
           this.metric = calculateMetric(); 
       } catch (NumberFormatException e) {
           System.err.println("Invalid bid format: " + bid);

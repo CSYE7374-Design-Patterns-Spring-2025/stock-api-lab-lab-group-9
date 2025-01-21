@@ -6,15 +6,17 @@ public class AmazonStock extends Stock implements Tradable0{
 
   public AmazonStock(String name, double price, String description) {
     super(name, price, description);
+    addPriceToHistory(price);
   }
 
   @Override
   public void setBid(String bid){
     try {
       double numericBid = Double.parseDouble(bid);
-      previousPrice = price; // Update previous price
-      price += numericBid * 0.02; // Increase price by 2% of the bid
-      metric = calculateMetric(); // Update metric after bid
+      previousPrice = price; 
+      price += numericBid * 0.02; 
+      addPriceToHistory(price);
+      metric = calculateMetric(); 
       } catch (NumberFormatException e) {
         System.out.println(e.getMessage());
       }

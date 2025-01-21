@@ -1,9 +1,13 @@
 package edu.neu.csye7374;
 
+import java.util.ArrayList;
+import java.util.List;
+
 abstract class Stock implements Tradable{
     String name;
     double price;
     String description;
+    List<Double> priceHistory = new ArrayList<Double>();
 
     public Stock() {
     }
@@ -12,6 +16,16 @@ abstract class Stock implements Tradable{
         this.name = name;
         this.price = price;
         this.description = description;
+    }
+
+    public void addPriceToHistory(double price){
+        priceHistory.add(price);
+    }
+
+    public void displayPriceHistory(){
+        for (Double price : priceHistory) {
+            System.out.println(price);
+        }
     }
 
     public String getName() {
@@ -43,7 +57,7 @@ abstract class Stock implements Tradable{
                 "name='" + name + '\'' +
                 ", price=" + price +
                 ", description='" + description + '\'' +
-                '}';
+                '}' + " Price History: " + priceHistory;
     }
 
 }

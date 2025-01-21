@@ -13,16 +13,18 @@ public class Driver {
         //your driver code here
         StockMarket market = StockMarket.getInstance();
         Stock amaStock = new AmazonStock("AmazonStck", 131.15, "Amzn Common Stock");
-        Stock metaStock = new AmazonStock("MetaStck", 101.15, "Meta Common Stock");
+        Stock metaStock = new MetaStock("MetaStck", 101.15, "Meta Common Stock");
         market.addStock(amaStock);
         market.addStock(metaStock);
 
-        String[] bids = {"10", "20", "55", "25.5", "30", "5"};
-        for (String bid:bids){
+        String[] amazonBids = {"50", "-20", "100", "300", "-50", "200"};
+        for (String bid:amazonBids){
             market.tradeStock(amaStock, bid);
         }
 
-        for (String bid:bids){
+        String[] metaBids = {"30", "-10", "200", "-100", "50", "-200"};
+
+        for (String bid:metaBids){
             market.tradeStock(metaStock, bid);
         }
 

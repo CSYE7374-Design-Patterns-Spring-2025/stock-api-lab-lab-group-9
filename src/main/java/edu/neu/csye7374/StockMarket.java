@@ -31,8 +31,14 @@ public class StockMarket {
     }
 
     public void tradeStock(Stock stock, String bid) {
-        stock.setBid(bid);
-        System.out.println(stock.toString() + ", Metric: " + stock.getMetric());
+        if(stockList.contains(stock))
+        {
+            stock.setBid(bid);
+            System.out.println(stock.toString() + ", Metric: " + stock.getMetric());
+        }
+        else{
+            System.out.println("Stock not found in market.");
+        }
     }
 
     public void showAllStocks() {

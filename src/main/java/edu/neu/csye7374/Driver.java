@@ -20,6 +20,7 @@ public class Driver {
         String[] amazonBids = {"50", "-20", "100", "300", "-50", "200"};
         for (String bid:amazonBids){
             market.tradeStock(amaStock, bid);
+            //amaStock.displayPriceHistory();
         }
 
         String[] metaBids = {"30", "-10", "200", "-100", "50", "-200"};

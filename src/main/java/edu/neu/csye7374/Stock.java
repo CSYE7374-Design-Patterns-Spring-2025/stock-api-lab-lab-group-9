@@ -22,6 +22,13 @@ abstract class Stock implements Tradable{
         priceHistory.add(price);
     }
 
+    public double getPreviousPrice(){
+        if (priceHistory.size() < 2) {
+            return 0;
+        }
+        return priceHistory.get(priceHistory.size() - 2);
+    }
+
     public void displayPriceHistory(){
         for (Double price : priceHistory) {
             System.out.println(price);
@@ -57,7 +64,7 @@ abstract class Stock implements Tradable{
                 "name='" + name + '\'' +
                 ", price=" + price +
                 ", description='" + description + '\'' +
-                '}' + " Price History: " + priceHistory;
+                '}' + " Previous Price: " + getPreviousPrice();
     }
 
 }

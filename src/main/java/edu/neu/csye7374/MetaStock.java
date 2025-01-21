@@ -13,7 +13,7 @@ public class MetaStock extends Stock implements Tradable1{
   public void setBid(String bid) {
       try {
           double numericBid = Double.parseDouble(bid);
-          previousPrice = price;
+          previousPrice = getPreviousPrice();
           price += numericBid * 0.02;
           addPriceToHistory(price); 
           this.metric = calculateMetric(); 
@@ -23,6 +23,10 @@ public class MetaStock extends Stock implements Tradable1{
     }
 
     private String calculateMetric() {
+        if (priceHistory.size() < 2) {
+            return "Not enough data to calculate metric"; // Avoid calculation on first bid
+        }
+        previousPrice = priceHistory.get(priceHistory.size() - 2);
         double percentageChange = ((price - previousPrice) / previousPrice) * 100;
     
         if (percentageChange > 2) { 
